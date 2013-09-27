@@ -1,0 +1,67 @@
+extends layout
+
+block content
+    body.container.chat-page(onload='noBack();', onpageshow='if (event.persisted) noBack();', onunload='', oncontextmenu='return false;')
+        bgsound(src='slash.mp3', loop='1')
+        .container.header-wrapper-chat
+            .signout-div
+                p#codename.pcn=user.codename
+                a#signout.signout(href="/ranking")
+                .peekawoo-logo2
+        .chat-container
+            .photo-con
+                .chat-timer-div
+                    .chat-timer
+                        #left-time
+                            .dash(class="minutes_dash")
+                                #countdown.digit
+                                span.colon_game :
+                                #countdown1.digit
+                .current-photo
+                .next-photo
+                .previous-photo
+            .chat-view
+                .container
+                    .chatwindow
+                        .messagewindow
+            .chat-text
+                input#message(type='text', name='message')
+                button#reply(type='button',name='reply')
+                input(type='hidden',id='room', value=room.name)
+                input(type='hidden',id='chatm8', value=JSON.stringify(room))
+                input(type="hidden",id="user",value=JSON.stringify(user))
+                input(type="hidden",id="list",value=listgen)
+                #r1.rate_widget
+                    #rate.ratings_chick()
+    script(src="/socket.io/socket.io.js")
+    script(defer, src="/javascripts/chat.js")
+    script
+        var seconds = 120;
+        function secondPassed() {
+            var minutes = Math.floor(seconds/60);
+            var remainingSeconds = Math.floor((seconds % 60)/1);
+            if (remainingSeconds < 10) {
+                remainingSeconds = "0" + remainingSeconds; 
+            }
+            document.getElementById('countdown').innerHTML = minutes;
+            document.getElementById('countdown1').innerHTML = remainingSeconds;
+            if (seconds == 0) {
+                clearInterval(countdownTimer);
+            } else {
+                seconds--;
+            }
+        }
+ 
+        var countdownTimer = setInterval('secondPassed()', 1000);
+        $('.ratings_chick').click(
+            function(){
+                if($(this).is('.ratings_chick')){
+                    $(this).prevAll().andSelf().removeClass('ratings_chick');
+                    $(this).prevAll().andSelf().addClass('ratings_chick-sel');
+                }
+                else{
+                    $(this).prevAll().andSelf().removeClass('ratings_chick-sel');
+                    $(this).prevAll().andSelf().addClass('ratings_chick');
+                }
+            }
+        );

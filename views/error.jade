@@ -1,0 +1,20 @@
+extends layout
+
+block content
+    body.container.error-bg(onload='noBack();', onpageshow='if (event.persisted) noBack();', onunload='', oncontextmenu='return false;')
+        .head.peekawoo-error-logo
+            .container
+                .error-blue-image
+                p.text-error1 Something went kookoo!
+                p.text-error2 Come back later or refresh the page
+                center
+                    input.btn.btn-info.btn-large(type="button" onclick="window.location='/login'" value="Go to Login")
+        script
+            window.history.forward();
+            function noBack() { window.history.forward(); }
+            $(document).unbind('keydown').bind('keydown', function (event) {
+                if (event.keyCode === 8 || event.keyCode === 116 || event.keyCode === 115) {
+                    //event.preventDefault();
+                    changePage = true;
+                }
+            });

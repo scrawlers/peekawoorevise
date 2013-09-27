@@ -1,0 +1,61 @@
+extends layout
+
+block content
+    body.container.index-bg
+        #pd1379581899473.pd-embed
+        .head.peekawoo-logo
+        .container
+            .span6.span-height
+                iframe(width='420', height='315', src='//www.youtube.com/embed/OvxH_pN8I88', frameborder='0', allowfullscreen='allowfullscreen')
+            .span6.span-height
+                form.form-login(method='get', action='/subscribe2', id='subscribe').span6
+                    .span5.index-form-container
+                        br
+                        h1.text-signin Sign In
+                        p.text-signin2 Meet local singles on the world's first online speed dating site
+                        br
+                        a.sb-facebook(href="/authfb", title='Dont worry, we wont: | *Post on your profile without your permission | *Spam any of your friends | *Share your private details')
+                        p.text-signin2 or
+                        a.sb-twitter(href="/authtw")
+                        br
+                        hr.hr-line
+                        p.text-email Want to be the first to try out our app?
+                            input.email(type="email", name="inputBox", placeholder="Enter your email here",required='required') 
+                        button.subscribe-button(type='submit',name='input.email')
+        script(type='text/javascript', src='http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js')
+        script(language='JavaScript', type='text/javascript', src="javascripts/Audio-HTML5x.js")
+        script(type='text/javascript')
+            $(document).ready(function() {
+                // Tooltip only Text
+                $('a.sb-facebook').hover(function(){
+                    // Hover over code
+                    var title = $(this).attr('title');
+                    $(this).data('tipText', title).removeAttr('title');
+                    $('<p class="tooltip"></p>')
+                    .text(title)
+                    .appendTo('body')
+                    .fadeIn('slow');
+                }, function() {
+                    // Hover out code
+                    $(this).attr('title', $(this).data('tipText'));
+                    //$('.tooltip').remove();
+                }).mousemove(function(e) {
+                    var mousex = e.pageX + 20; //Get X coordinates
+                    var mousey = e.pageY + 10; //Get Y coordinates
+                    $('.tooltip')
+                    .css({ top: mousey, left: mousex })
+                });
+            });
+            var _polldaddy = [] || _polldaddy;
+            _polldaddy.push( {
+                type: 'slider',
+                title: 'Take Our Survey!',
+                body: 'Please help us improve our service to you by taking our quick survey :)',
+                button: 'Get Started »',
+                domain: 'peekawooapp.polldaddy.com/s/',
+                id: 'peekawoo-chat-feedback-survey',
+                placeholder: 'pd1379581899473'
+            } );
+            (function(d,c,j){if(!document.getElementById(j)){var pd=d.createElement(c),s;pd.id=j;pd.src='http://i0.poll.fm/survey.js';s=document.getElementsByTagName(c)[0];s.parentNode.insertBefore(pd,s);}}(document,'script','pd-embed'));
+        noscript
+            a(href='http://peekawooapp.polldaddy.com/s/peekawoo-chat-feedback-survey') Take Our Survey!

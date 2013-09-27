@@ -1,0 +1,12 @@
+{
+"fb" : {
+	"clientID": "584276618297699",
+    "clientSecret": "40f90b6491ba942d3276b20a935bf505",
+    "callbackURL": "http://192.168.43.198/authfb/callback"
+ },
+ "tw" : {
+	"consumerKey": "uSBZ86eTy3sSJ3M49seaA",
+	"consumerSecret": "l5WXaz5IZ0ZmvGnTcEbJw6Zp0OIRQhkNW96uhTt0m0",
+	"callbackURL": "http://peekawoo.com/authtw/callback"
+ }
+}

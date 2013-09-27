@@ -1,0 +1,39 @@
+extends layout
+
+block content
+    body.container
+    .start-bg
+    .head.peekawoo-start-logo
+                br
+                br
+                br
+                br
+                br
+                br
+                br
+                br                
+                iframe(width='420', height='315', src='//www.youtube.com/embed/OvxH_pN8I88', frameborder='0', allowfullscreen='allowfullscreen')
+                .start-image
+                p.start-text Speed date starts at 8:00pm to 12mn (+8:00 GMT)
+                a.btn.btn-primary(href='http://signup.peekawoo.com/') Subscribe
+        script(type='text/javascript')
+            var setTimeCount;
+            var checkHours = new Date().getHours();
+            if(checkHours > 19){
+                setTimeCount = 0;
+            }
+            else{
+                var newDate = new Date().getTime();
+                var setDateCount = new Date();
+                setDateCount.setHours(20,0,0,0);
+                setTimeCount = Number(setDateCount) - Number(newDate);
+                setTimeCount/=1000;
+            }
+            var myCountdown2 = new Countdown({
+                time: setTimeCount,
+                width:200,
+                height:80,
+                rangeHi:"hour",
+                style:"flip"
+            });
+            $('#stage_jbeeb_3').css('top','160px');

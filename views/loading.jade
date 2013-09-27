@@ -1,0 +1,20 @@
+extends layout
+
+block content
+    body.container.error-bg
+        .head.peekawoo-error-logo
+            input(type="hidden",id="user",value=JSON.stringify(user))
+            
+            .container.loading-image
+                    .container
+                    p.text-loading Please wait while the chat room loads...
+        script( src="/socket.io/socket.io.js")
+        script( src="/javascripts/jquery-2.0.3.min.js")
+        script(type='text/javascript', src="/javascripts/loading.js")
+        script(language='JavaScript', type='text/javascript', src="javascripts/Audio-HTML5.js")
+        script
+            $(document).unbind('keydown').bind('keydown', function (event) {
+                if (event.keyCode === 8 || event.keyCode === 116 || event.keyCode === 115) {
+                    event.preventDefault();
+                }
+            });
